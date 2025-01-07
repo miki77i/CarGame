@@ -8,6 +8,9 @@ class Car():
         self.height_window = height_window
         self.image = pygame.image.load(image_path)
 
+        self.isHealth = False
+        self.healthImage = pygame.image.load('images/health.jpg')
+
         carRect = self.image.get_rect()
         self.width = carRect.width
         self.height = carRect.height
@@ -18,6 +21,7 @@ class Car():
         self.x = x
         self.y = y
 
+        self.health = 3
         self.speed_x = 10
         self.speed_y = 10
     
@@ -36,6 +40,11 @@ class Car():
             self.x += self.speed_x
 
     def Draw(self):
+        if self.isHealth:
+            for i in range(1, self.health + 1):
+                self.window.blit(self.healthImage, (55 * i, 10))
+
+
         self.window.blit(self.image, (self.x, self.y))
 
 

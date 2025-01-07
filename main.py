@@ -15,6 +15,7 @@ window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
 
 oCar = Car(window, WINDOW_WIDTH, WINDOW_HEIGHT, 256, 256, 'images/car.png')
+oCar.isHealth = True
 oRoad1 = Road(window, WINDOW_WIDTH, WINDOW_HEIGHT, 0, 0)
 oRoad2 = Road(window, WINDOW_WIDTH, WINDOW_HEIGHT, 0, 512)
 oRoad3 = Road(window, WINDOW_WIDTH, WINDOW_HEIGHT, 0, -512)
@@ -46,7 +47,9 @@ while True:
     UpdateRoads()
 
     if test_collider:
-        print('Столкновение!')
+        oCar.health -= 1
+        print(oCar.health)
+        
 
     # Считывание клавиши и перерисовка машины
     keyPressedTuple = pygame.key.get_pressed()
